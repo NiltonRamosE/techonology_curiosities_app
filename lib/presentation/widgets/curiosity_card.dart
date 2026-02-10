@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import '../../domain/entities/curiosity.dart';
 import '../pages/curiosity_detail_page.dart';
+
 class CuriosityCard extends StatelessWidget {
   final Curiosity curiosity;
-
-  const CuriosityCard({super.key, required this.curiosity});
+  final int index;
+  const CuriosityCard({super.key, required this.curiosity, required this.index});
 
   @override
   Widget build(BuildContext context) {
@@ -54,10 +55,9 @@ class CuriosityCard extends StatelessWidget {
                     Text(
                       curiosity.title,
                       style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.bold,
-                      ),
+                            fontWeight: FontWeight.bold,
+                          ),
                       maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
                     ),
                     const SizedBox(height: 4),
                     Text(
@@ -66,19 +66,7 @@ class CuriosityCard extends StatelessWidget {
                       maxLines: 2,
                       overflow: TextOverflow.ellipsis,
                     ),
-                    // Información adicional pequeña
                     const SizedBox(height: 8),
-                    Wrap(
-                      spacing: 8,
-                      children: [
-                        if (curiosity.methods > 0)
-                          _buildInfoChip('${curiosity.methods} métodos'),
-                        if (curiosity.popularity > 0)
-                          _buildInfoChip('${curiosity.popularity} popular'),
-                        if (curiosity.health > 0)
-                          _buildInfoChip('${curiosity.health}% salud'),
-                      ],
-                    ),
                   ],
                 ),
               ),
