@@ -1,0 +1,5 @@
+package com.example.technology_curiosities_app
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity()
